@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sixpence.Web", "Sixpence.Web\Sixpence.Web.csproj", "{C58C7039-E0E6-44F3-8113-D41D5479DD49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sixpence.Web.Test", "Sixpence.Web.Test\Sixpence.Web.Test.csproj", "{1845A2FC-8739-4BB6-84C8-F2278A16DE13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C58C7039-E0E6-44F3-8113-D41D5479DD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C58C7039-E0E6-44F3-8113-D41D5479DD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C58C7039-E0E6-44F3-8113-D41D5479DD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C58C7039-E0E6-44F3-8113-D41D5479DD49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1845A2FC-8739-4BB6-84C8-F2278A16DE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1845A2FC-8739-4BB6-84C8-F2278A16DE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1845A2FC-8739-4BB6-84C8-F2278A16DE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1845A2FC-8739-4BB6-84C8-F2278A16DE13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1262AD31-946F-405D-91F4-E3E7A86D4D50}
+	EndGlobalSection
+EndGlobal
