@@ -11,7 +11,7 @@ namespace Sixpence.Web.Test
         [TestMethod]
         public void TestMethod()
         {
-            CreateHostBuilder(new string[] { }).Build().Run();
+            // CreateHostBuilder(new string[] { }).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
