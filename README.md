@@ -4,23 +4,34 @@
 
 ## 介绍
 
-引用此框架能够迅速搭建一个 Web 后端服务，功能包含：
+一个基于`.net core 3.1`的`WebApi`框架，通过此框架能迅速搭建一个接口平台
 
-+ 登录、注册、JWT 认证
-+ 作业管理
-+ 实体管理
-+ 系统参数
-+ 选项集
-+ 邮箱验证
-+ 图库（Pixbay)
-+ 文件存储
-+ 机器人
-+ 版本管理
++ 基础功能
+  + 登录/注册
+    + JWT
+    + 集成了Github、Gitee等第三方登录策略
+    + 支持邮箱注册
+  + 基于RBAC的角色管理
+    + 权限管理
+    + 角色管理
+    + 用户管理
+  + 图库
+    + 本地图片
+    + Pixabay 云图库
+  + 作业管理（quartz）
+  + 数据库表维护
+    + 实体管理
+    + 字段管理
+  + 选项集
+  + 版本管理
+    + 支持CSV文件、SQL脚本初始化数据
+    + 启动自动执行迁移脚本
++ 集成 Swagger（手动开启）
 
 ## 安装
 
 ```powershell
-dotnet add package Sixpence.Web --version 1.0.0
+dotnet add package Sixpence.Web --version 1.1.0
 ```
 
 ## 使用
