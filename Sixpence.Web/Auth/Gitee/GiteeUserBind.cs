@@ -8,6 +8,8 @@ namespace Sixpence.Web.Auth.Gitee
 {
     public  class GiteeUserBind : IThirdPartyBindStrategy
     {
+        public string GetName() => "Gitee";
+
         public void Bind(string code, string userid)
         {
             var manager = EntityManagerFactory.GetManager();

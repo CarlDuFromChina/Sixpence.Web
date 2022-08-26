@@ -8,6 +8,8 @@ namespace Sixpence.Web.Auth.Github
 {
     public class GithubUserBind : IThirdPartyBindStrategy
     {
+        public string GetName() => "Github";
+
         public void Bind(string code, string userid)
         {
             var manager = EntityManagerFactory.GetManager();

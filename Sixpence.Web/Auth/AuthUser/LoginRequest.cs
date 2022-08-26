@@ -25,16 +25,6 @@ namespace Sixpence.Web.Auth
         /// <summary>
         /// 第三方登录方式
         /// </summary>
-        public ThirdPartyLoginType type { get; set; }
-    }
-
-    /// <summary>
-    /// 第三方联合登录方式
-    /// </summary>
-    public enum ThirdPartyLoginType
-    {
-        Github,
-        Gitee,
-        QQ
+        public string type { get; set; }
     }
 }

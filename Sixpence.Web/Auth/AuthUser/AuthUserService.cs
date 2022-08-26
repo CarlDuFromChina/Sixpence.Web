@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Web;
 using Sixpence.ORM.EntityManager;
 using Sixpence.Common.IoC;
+using System.Linq;
 
 namespace Sixpence.Web.Auth
 {
@@ -75,12 +76,12 @@ SELECT * FROM auth_user WHERE code = @code AND password = @password;
         /// <param name="type"></param>
         /// <param name="id"></param>
         /// <param name="code"></param>
-        public void BindThirdPartyAccount(ThirdPartyLoginType type, string id, string code)
+        public void BindThirdPartyAccount(string type, string id, string code)
         {
             AssertUtil.IsNullOrEmpty(id, "用户id不能为空");
             AssertUtil.IsNullOrEmpty(code, "编码不能为空");
             AssertUtil.IsNull(type, "绑定类型不能为空");
-            ServiceContainer.Resolve<IThirdPartyBindStrategy>(name => name.Contains(type.ToString(), StringComparison.OrdinalIgnoreCase)).Bind(code, id);
+            ServiceContainer.ResolveAll<IThirdPartyBindStrategy>().First(item => item.GetName().Equals(type, StringComparison.OrdinalIgnoreCase))?.Bind(code, id);
         }
     }
 }

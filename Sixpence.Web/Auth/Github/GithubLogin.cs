@@ -13,6 +13,8 @@ namespace Sixpence.Web.Auth.Github
 {
     public class GithubLogin : IThirdPartyLoginStrategy
     {
+        public string GetName() => "Github";
+
         public LoginResponse Login(object param)
         {
             var manager = EntityManagerFactory.GetManager();

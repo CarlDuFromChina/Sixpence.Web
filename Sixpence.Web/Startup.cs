@@ -77,14 +77,6 @@ namespace Sixpence.Web
             // 添加Jwt认证服务
             services.AddJwt();
 
-            // 添加Swagger
-#if DEBUG
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "接口文档", Version = "v1" });
-            });
-#endif
-
             // 添加AutoMapper
             services.AddAutoMapper(MapperHelper.MapType());
         }
@@ -116,15 +108,6 @@ namespace Sixpence.Web
             app.UseAuthentication();
 
             app.UseAuthorization();
-
-#if DEBUG
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint($"v1/swagger.json", "接口文档");
-                c.RoutePrefix = "Swagger";
-            });
-#endif
 
             app.UseEndpoints(endpoints =>
             {

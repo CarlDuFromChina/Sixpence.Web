@@ -49,7 +49,7 @@ namespace Sixpence.Web.Auth
         /// <param name="userid"></param>
         /// <param name="code"></param>
         [HttpPost("bind")]
-        public void BindThirdPartyAccount(ThirdPartyLoginType type, string userid, string code)
+        public void BindThirdPartyAccount(string type, string userid, string code)
         {
             new AuthUserService().BindThirdPartyAccount(type, userid, code);
         }

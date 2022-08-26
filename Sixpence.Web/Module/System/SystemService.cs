@@ -20,6 +20,7 @@ using Sixpence.Web.Module.System;
 using Sixpence.Web.Module.System.Models;
 using Sixpence.Web.Auth.Github;
 using Sixpence.Web.Auth.Gitee;
+using System.Linq;
 
 namespace Sixpence.Web.Module.DataService
 {
@@ -91,9 +92,11 @@ namespace Sixpence.Web.Module.DataService
             // 联合第三方登录
             if (model.third_party_login != null)
             {
-                return ServiceContainer
-                    .Resolve<IThirdPartyLoginStrategy>(name => name.Contains(model.third_party_login.type.ToString(), StringComparison.OrdinalIgnoreCase))
-                    .Login(model.third_party_login.param);
+                var loginStrategy = ServiceContainer
+                    .ResolveAll<IThirdPartyLoginStrategy>()
+                    .First(item => item.GetName().Equals(model.third_party_login.type, StringComparison.OrdinalIgnoreCase));
+                AssertUtil.IsNull(loginStrategy, $"根据{model.third_party_login.type}未找到登录策略");
+                return loginStrategy.Login(model.third_party_login.param);
             }
 
             var code = model.code;

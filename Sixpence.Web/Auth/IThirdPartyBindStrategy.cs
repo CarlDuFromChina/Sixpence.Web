@@ -8,6 +8,7 @@ namespace Sixpence.Web.Auth
     [ServiceRegister]
     public interface IThirdPartyBindStrategy
     {
+        string GetName();
         void Bind(string code, string userid);
     }
 }

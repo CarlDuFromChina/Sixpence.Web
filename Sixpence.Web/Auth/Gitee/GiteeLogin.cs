@@ -10,6 +10,8 @@ namespace Sixpence.Web.Auth.Gitee
 {
     public class GiteeLogin : IThirdPartyLoginStrategy
     {
+        public string GetName() => "Gitee";
+
         public LoginResponse Login(object param)
         {
             var manager = EntityManagerFactory.GetManager();

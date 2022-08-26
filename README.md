@@ -17,6 +17,12 @@
 + 机器人
 + 版本管理
 
+## 安装
+
+```powershell
+dotnet add package Sixpence.Web --version 1.0.0
+```
+
 ## 关于
 
 本项目是作者利用空余时间开发，维护全靠热爱发电。如果使用过程中遇到问题，欢迎报告 issue。
