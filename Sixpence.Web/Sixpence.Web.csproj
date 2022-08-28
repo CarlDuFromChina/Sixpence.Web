@@ -5,7 +5,7 @@
 	  <Authors>Karl Du</Authors>
     <Company>Sixpence</Company>
     <Description>一个功能强大的 Web 框架</Description>
-    <ReleaseVersion>1.1.0</ReleaseVersion>
+    <ReleaseVersion>1.2.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
 
