@@ -1,17 +1,17 @@
-﻿using Sixpence.Web.Config;
+﻿using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Sixpence.Web.Config;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Sixpence.Web.Auth
+namespace Sixpence.Web.Extensions
 {
-    internal static class AuthExtension
+    public static class ServiceCollectionExtension
     {
         public static void AddJwt(this IServiceCollection services)
         {
@@ -71,3 +71,4 @@ namespace Sixpence.Web.Auth
         }
     }
 }
+

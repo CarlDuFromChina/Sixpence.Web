@@ -1,8 +1,5 @@
+using System.Text.RegularExpressions;
 using AutoMapper;
-using Sixpence.Web.Auth;
-using Sixpence.Web.Job;
-using Sixpence.Web.Module.SysRole;
-using Sixpence.Web.Profiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,16 +9,11 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using Sixpence.Common;
 using Sixpence.ORM.Extensions;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Sixpence.Web.Extensions;
+using Sixpence.Web.Profiles;
 
 namespace Sixpence.Web
 {
@@ -69,7 +61,7 @@ namespace Sixpence.Web
                 options.Filters.Add(typeof(WebApi.WebApiContextFilter));
             });
 
-            services.AddHttpContextAccessor();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // 添加依赖注入服务
             services.AddServiceContainer();

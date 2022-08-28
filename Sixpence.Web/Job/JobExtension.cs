@@ -63,20 +63,5 @@ namespace Sixpence.Web.Job
             }
             return (TriggerState)Convert.ToInt32(value);
         }
-
-        public static IApplicationBuilder UseJob(this IApplicationBuilder app)
-        {
-            AssemblyUtil
-                .GetAssemblies("Sixpence.*.dll")
-                .GetTypes()
-                .Where(type => !type.IsAbstract && !type.IsInterface && type.GetInterfaces().Contains(typeof(IJob)) && !type.IsDefined(typeof(DynamicJobAttribute), true))
-                .Each(type => ServiceContainer.Register(typeof(IJob), type));
-            JobHelpers.Start();
-            new RobotMessageTaskService().GetAllData().Each(item =>
-            {
-                JobHelpers.RegisterJob(new RobotMessageTaskJob(item.name, item.robotid_name, item.runtime), item, item.job_state.ToTriggerState());
-            });
-            return app;
-        }
     }
 }
