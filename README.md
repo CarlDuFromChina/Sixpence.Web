@@ -31,32 +31,18 @@
 ## 安装
 
 ```powershell
-dotnet add package Sixpence.Web --version 1.2.0
+dotnet add package Sixpence.Web --version 1.3.0
 ```
 
 ## 使用
 
-1. 快速启动
+1、初始化脚本
 
-```csharp
-// startup.cs
-public class Startup : Sixpence.Web.Startup
-{
-    public Startup(IConfiguration configuration) : base(configuration) { }
+将项目下的`version`文件夹到目录下（注意：编译选择内容）
 
-    public override void ConfigureServices(IServiceCollection services)
-    {
-        base.ConfigureServices(services);
-    }
+2、Startup
 
-    public override void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHttpContextAccessor accessor)
-    {
-        base.Configure(app, env, accessor);
-    }
-}
-```
-
-2. 自定义
+参考：
 
 ```csharp
 public class Startup
