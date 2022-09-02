@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using Sixpence.Common;
 using Sixpence.ORM.Extensions;
@@ -69,6 +70,14 @@ namespace Sixpence.Web
             // 添加Jwt认证服务
             services.AddJwt();
 
+#if DEBUG
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "接口文档", Version = "v1" });
+            });
+#endif
+
+
             // 添加AutoMapper
             services.AddAutoMapper(MapperHelper.MapType());
         }
@@ -100,6 +109,15 @@ namespace Sixpence.Web
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+#if DEBUG
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint($"v1/swagger.json", "接口文档");
+                c.RoutePrefix = "Swagger";
+            });
+#endif
 
             app.UseEndpoints(endpoints =>
             {

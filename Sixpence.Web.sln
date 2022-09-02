@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sixpence.Web", "Sixpence.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sixpence.Web.Test", "Sixpence.Web.Test\Sixpence.Web.Test.csproj", "{1845A2FC-8739-4BB6-84C8-F2278A16DE13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sixpence.Web.Console", "Sixpence.Web.Console\Sixpence.Web.Console.csproj", "{696BA714-53A6-4CE5-B467-778A1B986576}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1845A2FC-8739-4BB6-84C8-F2278A16DE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1845A2FC-8739-4BB6-84C8-F2278A16DE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1845A2FC-8739-4BB6-84C8-F2278A16DE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{696BA714-53A6-4CE5-B467-778A1B986576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{696BA714-53A6-4CE5-B467-778A1B986576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{696BA714-53A6-4CE5-B467-778A1B986576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{696BA714-53A6-4CE5-B467-778A1B986576}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

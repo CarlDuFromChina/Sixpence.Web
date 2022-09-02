@@ -44,13 +44,35 @@ namespace Sixpence.Web.Module.Role
 
         public bool AllowCreateOrUpdateRole(string roleid)
         {
-            var currentRoleId = Manager.QueryFirst<user_info>(UserIdentityUtil.GetCurrentUserId())?.roleid;
-            if (string.IsNullOrEmpty(currentRoleId))
+            var curid = UserIdentityUtil.GetCurrentUserId();
+            var curRoleId = string.Empty;
+
+            switch (curid)
+            {
+                case UserIdentityUtil.SYSTEM_ID:
+                    curRoleId = curid;
+                    break;
+                case UserIdentityUtil.ANONYMOUS_ID:
+                    curRoleId = curid;
+                    break;
+                case UserIdentityUtil.ADMIN_ID:
+                    curRoleId = curid;
+                    break;
+                case UserIdentityUtil.USER_ID:
+                    curRoleId = curid;
+                    break;
+                default:
+                    curRoleId = Manager.QueryFirst<user_info>(UserIdentityUtil.GetCurrentUserId())?.roleid;
+                    break;
+            }
+
+            if (string.IsNullOrEmpty(curRoleId))
             {
                 return false;
             }
             var toRoleId = roleid;
-            return Convert.ToInt32(toRoleId.FirstOrDefault().ToString()) >= Convert.ToInt32(currentRoleId.FirstOrDefault().ToString());
+
+            return Convert.ToInt32(toRoleId.FirstOrDefault().ToString()) >= Convert.ToInt32(curRoleId.FirstOrDefault().ToString());
         }
     }
 }
