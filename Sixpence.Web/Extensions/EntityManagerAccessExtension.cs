@@ -1,5 +1,4 @@
 ﻿using Sixpence.Web.Auth;
-using Sixpence.Web.Module.SysEntity;
 using Sixpence.Common;
 using Sixpence.Common.Utils;
 using Sixpence.ORM.Entity;
@@ -9,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using Sixpence.Web.Cache;
 
 namespace Sixpence.Web.Extensions
 {

@@ -1,7 +1,4 @@
-﻿using Sixpence.Web.Auth.Privilege;
-using Sixpence.ORM.Entity;
-using Sixpence.Web.Module.Role;
-using Sixpence.Web.Module.SysEntity;
+﻿using Sixpence.ORM.Entity;
 using Sixpence.Web.Module.SysMenu;
 using Sixpence.Common;
 using Sixpence.Common.Utils;
@@ -11,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sixpence.ORM.EntityManager;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Auth.Role.BasicRole
 {
@@ -37,15 +35,15 @@ namespace Sixpence.Web.Auth.Role.BasicRole
         /// </summary>
         /// <param name="roleName"></param>
         /// <returns></returns>
-        public sys_role GetSysRole()
+        public SysRole GetSysRole()
         {
             var key = $"{ROLE_PREFIX}_{RoleName}";
             return MemoryCacheUtil.GetOrAddCacheItem(key, () =>
             {
-                var role = Manager.QueryFirst<sys_role>("select * from sys_role where name = @name", new Dictionary<string, object>() { { "@name", Role.GetDescription() } });
+                var role = Manager.QueryFirst<SysRole>("select * from sys_role where name = @name", new Dictionary<string, object>() { { "@name", Role.GetDescription() } });
                 if (role == null)
                 {
-                    role = new sys_role()
+                    role = new SysRole()
                     {
                         id = Guid.NewGuid().ToString(),
                         name = Role.GetDescription(),
@@ -62,7 +60,7 @@ namespace Sixpence.Web.Auth.Role.BasicRole
         /// </summary>
         /// <param name="roleName"></param>
         /// <returns></returns>
-        public IEnumerable<sys_role_privilege> GetRolePrivilege()
+        public IEnumerable<SysRolePrivilege> GetRolePrivilege()
         {
             var key = $"{PRIVILEGE_PREFIX}_{RoleName}";
             return MemoryCacheUtil.GetOrAddCacheItem(key, () =>
@@ -71,7 +69,7 @@ namespace Sixpence.Web.Auth.Role.BasicRole
 SELECT * FROM sys_role_privilege
 WHERE sys_roleid_name = @name
 ";
-                var dataList = Manager.Query<sys_role_privilege>(sql, new Dictionary<string, object>() { { "@name", Role.GetDescription() } });
+                var dataList = Manager.Query<SysRolePrivilege>(sql, new Dictionary<string, object>() { { "@name", Role.GetDescription() } });
                 return dataList;
             }, DateTime.Now.AddHours(12));
         }
@@ -89,13 +87,13 @@ WHERE sys_roleid_name = @name
         /// 获取缺失权限
         /// </summary>
         /// <returns></returns>
-        public abstract IDictionary<string, IEnumerable<sys_role_privilege>> GetMissingPrivilege(IEntityManager manager);
+        public abstract IDictionary<string, IEnumerable<SysRolePrivilege>> GetMissingPrivilege(IEntityManager manager);
 
         /// <summary>
         /// 获取缺失实体权限
         /// </summary>
         /// <returns></returns>
-        protected IEnumerable<sys_entity> GetMissingEntityPrivileges(IEntityManager manager)
+        protected IEnumerable<SysEntity> GetMissingEntityPrivileges(IEntityManager manager)
         {
             var role = GetSysRole();
             var paramList = new Dictionary<string, object>() { { "@id", role.id } };
@@ -106,14 +104,14 @@ WHERE id NOT IN (
 	WHERE object_type = 'sys_entity' AND sys_roleid = @id
 )
 ";
-            return manager.Query<sys_entity>(sql, paramList);
+            return manager.Query<SysEntity>(sql, paramList);
         }
 
         /// <summary>
         /// 获取缺失菜单权限
         /// </summary>
         /// <returns></returns>
-        protected IEnumerable<sys_menu> GetMissingMenuPrivileges(IEntityManager manager)
+        protected IEnumerable<SysMenu> GetMissingMenuPrivileges(IEntityManager manager)
         {
             var role = GetSysRole();
             var paramList = new Dictionary<string, object>() { { "@id", role.id } };
@@ -124,7 +122,7 @@ WHERE id NOT IN (
 	WHERE object_type = 'sys_menu' AND sys_roleid = @id
 )
 ";
-            var dataList = manager.Query<sys_menu>(sql, paramList);
+            var dataList = manager.Query<SysMenu>(sql, paramList);
             return dataList;
         }
 
@@ -135,10 +133,10 @@ WHERE id NOT IN (
         /// <param name="role"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static sys_role_privilege GenerateRolePrivilege(BaseEntity entity, sys_role role, int value)
+        public static SysRolePrivilege GenerateRolePrivilege(BaseEntity entity, SysRole role, int value)
         {
             var user = UserIdentityUtil.GetSystem();
-            var privilege = new sys_role_privilege()
+            var privilege = new SysRolePrivilege()
             {
                 id = Guid.NewGuid().ToString(),
                 objectid = entity.GetPrimaryColumn().Value,

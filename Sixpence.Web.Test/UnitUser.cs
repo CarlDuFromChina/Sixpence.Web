@@ -7,8 +7,8 @@ using Sixpence.Common;
 using Sixpence.ORM.EntityManager;
 using Sixpence.ORM.Extensions;
 using Sixpence.Web.Auth;
-using Sixpence.Web.Auth.UserInfo;
 using Sixpence.Web.Config;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Test
 {
@@ -25,7 +25,7 @@ namespace Sixpence.Web.Test
             SixpenceORMBuilderExtension.UseORM(null, options =>
             {
                 options.AutoGenerate = true;
-                options.EntityClassNameCase = NameCase.UnderScore;
+                options.EntityClassNameCase = NameCase.Pascal;
             });
             manager = EntityManagerFactory.GetManager();
         }
@@ -35,7 +35,7 @@ namespace Sixpence.Web.Test
         {
             UserIdentityUtil.SetCurrentUser(UserIdentityUtil.GetSystem());
             var curUser = UserIdentityUtil.GetCurrentUser();
-            var user = new user_info()
+            var user = new UserInfo()
             {
                 id = "8F982672-75F6-4118-9FB0-B6FB02689B55",
                 name = "测试A",

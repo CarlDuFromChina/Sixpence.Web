@@ -1,5 +1,4 @@
-﻿using Sixpence.Web.Entity;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Quartz;
 using Sixpence.Common;
 using Sixpence.Common.IoC;
@@ -7,13 +6,13 @@ using Sixpence.Common.Utils;
 using Sixpence.ORM.Driver;
 using System;
 using System.Linq;
-using Sixpence.Web.RobotMessageTask;
+using Sixpence.Web.Model;
 
 namespace Sixpence.Web.Job
 {
     public static class JobExtension
     {
-        public static Entity.SelectOption ToSelectOption(this TriggerState triggerState)
+        public static SelectOption ToSelectOption(this TriggerState triggerState)
         {
             switch (triggerState)
             {

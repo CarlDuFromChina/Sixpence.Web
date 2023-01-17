@@ -1,10 +1,11 @@
-﻿using Sixpence.Web.Auth.UserInfo;
-using Sixpence.Web.Module.Role;
-using Sixpence.Common.Logging;
+﻿using Sixpence.Common.Logging;
 using Sixpence.ORM.EntityManager;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Sixpence.Web.Model;
+using Sixpence.Web.Service;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Auth.Gitee
 {
@@ -24,7 +25,7 @@ namespace Sixpence.Web.Auth.Gitee
                 var code = param as string;
                 var giteeToken = giteeService.GetAccessToken(code);
                 var giteeUser = giteeService.GetGiteeUserInfo(giteeToken);
-                var user = manager.QueryFirst<user_info>("select * from user_info where gitee_id = @id", new Dictionary<string, object>() { { "@id", giteeUser.id.ToString() } });
+                var user = manager.QueryFirst<UserInfo>("select * from user_info where gitee_id = @id", new Dictionary<string, object>() { { "@id", giteeUser.id.ToString() } });
                 
                 if (user != null)
                 {
@@ -43,7 +44,7 @@ namespace Sixpence.Web.Auth.Gitee
                     var role = sysRoleService.GetGuest();
                     var id = Guid.NewGuid().ToString();
                     var avatarId = giteeService.DownloadImage(giteeUser.avatar_url, id);
-                    var user = new user_info()
+                    var user = new UserInfo()
                     {
                         id = id,
                         code = giteeUser.id.ToString(),
@@ -59,7 +60,7 @@ namespace Sixpence.Web.Auth.Gitee
                         statecode_name = "启用"
                     };
                     manager.Create(user, false);
-                    var _authUser = new auth_user()
+                    var _authUser = new AuthUser()
                     {
                         id = user.id,
                         name = user.name,

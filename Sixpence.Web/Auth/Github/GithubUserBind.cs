@@ -1,8 +1,9 @@
-﻿using Sixpence.Web.Auth.UserInfo;
-using Sixpence.ORM.EntityManager;
+﻿using Sixpence.ORM.EntityManager;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Sixpence.Web.Service;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Auth.Github
 {
@@ -16,7 +17,7 @@ namespace Sixpence.Web.Auth.Github
             var githubService = new GithubAuthService(manager);
             manager.ExecuteTransaction(() =>
             {
-                var user = manager.QueryFirst<user_info>(userid);
+                var user = manager.QueryFirst<UserInfo>(userid);
                 var githubToken = githubService.GetAccessToken(code);
                 var githubUser = githubService.GetUserInfo(githubToken);
                 user.github_id = githubUser.id.ToString();

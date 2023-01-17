@@ -1,6 +1,4 @@
-﻿using Sixpence.Web.Auth.Privilege;
-using Sixpence.Web.Module.Role;
-using Sixpence.Common;
+﻿using Sixpence.Common;
 using Sixpence.Common.IoC;
 using Sixpence.ORM.EntityManager;
 using System;
@@ -8,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Auth.Role.BasicRole
 {
@@ -29,14 +28,14 @@ namespace Sixpence.Web.Auth.Role.BasicRole
         /// </summary>
         /// <param name="role"></param>
         /// <returns></returns>
-        sys_role GetSysRole();
+        SysRole GetSysRole();
 
         /// <summary>
         /// 获取角色权限
         /// </summary>
         /// <param name="role"></param>
         /// <returns></returns>
-        IEnumerable<sys_role_privilege> GetRolePrivilege();
+        IEnumerable<SysRolePrivilege> GetRolePrivilege();
 
         /// <summary>
         /// 清除缓存
@@ -47,7 +46,7 @@ namespace Sixpence.Web.Auth.Role.BasicRole
         /// 获取初始化权限
         /// </summary>
         /// <returns></returns>
-        IDictionary<string, IEnumerable<sys_role_privilege>> GetMissingPrivilege(IEntityManager manager);
+        IDictionary<string, IEnumerable<SysRolePrivilege>> GetMissingPrivilege(IEntityManager manager);
     }
 
     public enum RoleType

@@ -1,5 +1,4 @@
-﻿using Sixpence.Web.Auth.Privilege;
-using Sixpence.ORM.Entity;
+﻿using Sixpence.ORM.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -10,6 +9,8 @@ using System.Threading.Tasks;
 using Sixpence.ORM.Models;
 using Sixpence.Common.Utils;
 using System.IO;
+using Sixpence.Web.Service;
+using Sixpence.Web.Model;
 
 namespace Sixpence.Web.WebApi
 {

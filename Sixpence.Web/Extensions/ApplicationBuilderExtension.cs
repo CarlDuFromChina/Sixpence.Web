@@ -8,10 +8,10 @@ using Sixpence.Common;
 using Sixpence.Common.IoC;
 using Sixpence.Common.Utils;
 using Sixpence.ORM.EntityManager;
-using Sixpence.Web.Auth.Privilege;
 using Sixpence.Web.Auth.Role.BasicRole;
 using Sixpence.Web.Job;
-using Sixpence.Web.RobotMessageTask;
+using Sixpence.Web.Model;
+using Sixpence.Web.Service;
 
 namespace Sixpence.Web.Extensions
 {

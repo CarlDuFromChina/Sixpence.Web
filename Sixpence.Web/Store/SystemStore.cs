@@ -1,5 +1,4 @@
 ﻿using Sixpence.Common.Logging;
-using Sixpence.Web.Store.SysFile;
 using Sixpence.Common.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 
 using System.Web;
 using Sixpence.ORM.EntityManager;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Store
 {
@@ -23,7 +23,7 @@ namespace Sixpence.Web.Store
         {
             fileName.ToList().ForEach(item =>
             {
-                var filePath = sys_file.GetFilePath(item);
+                var filePath = SysFile.GetFilePath(item);
                 FileUtil.DeleteFile(filePath);
             });
         }
@@ -35,7 +35,7 @@ namespace Sixpence.Web.Store
         public async Task<IActionResult> DownLoad(string objectId)
         {
             var manager = EntityManagerFactory.GetManager();
-            var data = manager.QueryFirst<sys_file>(objectId) ?? manager.QueryFirst<sys_file>("select * from sys_file where hash_code = @id", new Dictionary<string, object>() { { "@id", objectId } });
+            var data = manager.QueryFirst<SysFile>(objectId) ?? manager.QueryFirst<SysFile>("select * from sys_file where hash_code = @id", new Dictionary<string, object>() { { "@id", objectId } });
             var fileInfo = new FileInfo(data.GetFilePath());
             if (fileInfo.Exists)
             {
@@ -55,7 +55,7 @@ namespace Sixpence.Web.Store
         public Stream GetStream(string id)
         {
             var manager = EntityManagerFactory.GetManager();
-            var data = manager.QueryFirst<sys_file>(id);
+            var data = manager.QueryFirst<SysFile>(id);
             return FileUtil.GetFileStream(data.GetFilePath());
         }
 
@@ -67,7 +67,7 @@ namespace Sixpence.Web.Store
         public void Upload(Stream stream, string fileName, out string filePath)
         {
             filePath = $"{Path.AltDirectorySeparatorChar}storage{Path.AltDirectorySeparatorChar}{fileName}"; // 相对路径
-            FileUtil.SaveFile(stream, sys_file.GetFilePath(fileName));
+            FileUtil.SaveFile(stream, SysFile.GetFilePath(fileName));
         }
     }
 }

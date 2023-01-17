@@ -1,5 +1,5 @@
-﻿using Sixpence.Web.Auth.Privilege;
-using Sixpence.Web.Auth.Role;
+﻿using Sixpence.Web.Auth.Role;
+using Sixpence.Web.Cache;
 using System;
 using System.Collections.Generic;
 using System.Linq;

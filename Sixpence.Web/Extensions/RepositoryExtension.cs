@@ -3,6 +3,7 @@ using Sixpence.ORM.Entity;
 using Sixpence.ORM.EntityManager;
 using Sixpence.ORM.Models;
 using Sixpence.ORM.Repository;
+using Sixpence.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

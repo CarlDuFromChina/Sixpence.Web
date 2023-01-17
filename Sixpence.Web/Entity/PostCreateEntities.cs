@@ -2,8 +2,6 @@
 using Sixpence.Web;
 using Sixpence.Web.Auth;
 using Sixpence.Web.Module.SysAttrs;
-using Sixpence.Web.Module.SysEntity;
-using Sixpence.Web.Module.VersionScriptExecutionLog;
 using Sixpence.Web.Utils;
 using Sixpence.Common;
 using Sixpence.Common.Logging;
@@ -16,6 +14,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using Sixpence.Web.Entity;
+using Sixpence.Web.Cache;
+using Sixpence.Web.Service;
 
 namespace Sixpence.ORM.Entity
 {
@@ -29,10 +30,10 @@ namespace Sixpence.ORM.Entity
                 {
                     #region 实体添加自动写入记录
                     var entityName = item.GetEntityName();
-                    var entity = manager.QueryFirst<sys_entity>("select * from sys_entity where code = @code", new Dictionary<string, object>() { { "@code", entityName } });
+                    var entity = manager.QueryFirst<SysEntity>("select * from sys_entity where code = @code", new Dictionary<string, object>() { { "@code", entityName } });
                     if (entity == null)
                     {
-                        entity = new sys_entity()
+                        entity = new SysEntity()
                         {
                             id = Guid.NewGuid().ToString(),
                             name = item.GetLogicalName(),
@@ -65,7 +66,7 @@ namespace Sixpence.ORM.Entity
                     {
                         if (!attrsList.Contains(attr.Name))
                         {
-                            var _attr = new sys_attrs()
+                            var _attr = new SysAttrs()
                             {
                                 id = Guid.NewGuid().ToString(),
                                 name = attr.LogicalName,

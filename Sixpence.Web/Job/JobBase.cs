@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Sixpence.Common.Current;
 using Sixpence.ORM.EntityManager;
-using Sixpence.Web.Module.JobHisotry;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Job
 {
@@ -65,7 +65,7 @@ namespace Sixpence.Web.Job
                 stopWatch.Start();
                 var manager = EntityManagerFactory.GetManager();
                 UserIdentityUtil.SetCurrentUser(user);
-                var history = new job_history()
+                var history = new JobHistory()
                 {
                     id = Guid.NewGuid().ToString(),
                     job_name = this.Name,

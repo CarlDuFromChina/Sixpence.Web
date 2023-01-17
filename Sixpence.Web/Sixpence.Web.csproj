@@ -10,6 +10,44 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="version\1.0\2022062001-sys_role.csv" />
+    <None Remove="version\1.0\2022062002-auth_user.csv" />
+    <None Remove="version\1.0\2022062003-user_info.csv" />
+    <None Remove="version\1.0\2022062004-sys_menu.csv" />
+    <None Remove="version\1.0\2022062005-sys_config.csv" />
+    <None Remove="version\1.0\2022062006-sys_param.csv" />
+    <None Remove="version\1.0\2022062007-sys_paramgroup.csv" />
+    <None Remove="version\1.0\2022062008-quartz.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="version\1.0\2022062001-sys_role.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version\1.0\2022062002-auth_user.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version\1.0\2022062003-user_info.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version\1.0\2022062004-sys_menu.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version\1.0\2022062005-sys_config.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version\1.0\2022062006-sys_param.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version\1.0\2022062007-sys_paramgroup.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="version\1.0\2022062008-quartz.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="27.2.1" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="IdentityModel" Version="5.1.0" />

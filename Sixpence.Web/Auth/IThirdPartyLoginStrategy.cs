@@ -1,8 +1,8 @@
-﻿using Sixpence.Web.Auth;
-using Sixpence.Common.IoC;
+﻿using Sixpence.Common.IoC;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Sixpence.Web.Model;
 
 namespace Sixpence.Web.Auth
 {
