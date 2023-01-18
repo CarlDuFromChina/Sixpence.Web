@@ -9,6 +9,7 @@ using Sixpence.Common.IoC;
 using Sixpence.ORM.EntityManager;
 using Sixpence.Web.Store;
 using Sixpence.Web.Entity;
+using Sixpence.ORM.Entity;
 
 namespace Sixpence.Web.Plugin
 {
@@ -16,6 +17,9 @@ namespace Sixpence.Web.Plugin
     {
         public void Execute(EntityManagerPluginContext context)
         {
+            if (!EntityCommon.CompareEntityName(nameof(SysFile), context.Entity.GetEntityName()))
+                return;
+
             var entity = context.Entity;
             switch (context.Action)
             {

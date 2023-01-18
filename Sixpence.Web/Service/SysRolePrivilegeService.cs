@@ -10,6 +10,7 @@ using Sixpence.Common.IoC;
 using Sixpence.ORM.Repository;
 using Sixpence.ORM.EntityManager;
 using Sixpence.Web.Entity;
+using Sixpence.ORM.Entity;
 
 namespace Sixpence.Web.Service
 {
@@ -55,9 +56,9 @@ WHERE sys_roleid = @id
                 case RoleType.All:
                     return privileges;
                 case RoleType.Entity:
-                    return privileges.Where(item => item.object_type == nameof(SysEntity));
+                    return privileges.Where(item => EntityCommon.CompareEntityName(nameof(SysEntity), item.object_type));
                 case RoleType.Menu:
-                    return privileges.Where(item => item.object_type == nameof(SysMenu));
+                    return privileges.Where(item => EntityCommon.CompareEntityName(nameof(SysMenu), item.object_type));
                 default:
                     return new List<SysRolePrivilege>();
             }

@@ -12,7 +12,7 @@ namespace Sixpence.Web.Plugin
     {
         public void Execute(EntityManagerPluginContext context)
         {
-            if (context.Entity.GetEntityName() != nameof(SysRolePrivilege)) return;
+            if (!EntityCommon.CompareEntityName(nameof(SysRolePrivilege), context.Entity.GetEntityName())) return;
 
             switch (context.Action)
             {

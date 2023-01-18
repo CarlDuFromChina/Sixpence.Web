@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sixpence.Web.Cache;
 using Sixpence.Web.Service;
+using Sixpence.Web.Entity;
 
 namespace Sixpence.Web.Plugin
 {
@@ -14,7 +15,8 @@ namespace Sixpence.Web.Plugin
     {
         public void Execute(EntityManagerPluginContext context)
         {
-            if (context.Entity.GetEntityName() != "sys_entity") return;
+            if (!EntityCommon.CompareEntityName(nameof(SysEntity), context.Entity.GetEntityName()))
+                return;
 
             var manager = context.EntityManager;
             switch (context.Action)

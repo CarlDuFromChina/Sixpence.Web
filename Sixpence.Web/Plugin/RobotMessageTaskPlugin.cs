@@ -14,10 +14,8 @@ namespace Sixpence.Web.Plugin
     {
         public void Execute(EntityManagerPluginContext context)
         {
-            if (context.Entity.GetEntityName() != "robot_message_task")
-            {
+            if (!EntityCommon.CompareEntityName(nameof(RobotMessageTask), context.Entity.GetEntityName()))
                 return;
-            }
 
             var obj = context.Entity as RobotMessageTask;
             switch (context.Action)

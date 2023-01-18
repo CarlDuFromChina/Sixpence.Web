@@ -18,7 +18,8 @@ namespace Sixpence.Web.Plugin
     {
         public void Execute(EntityManagerPluginContext context)
         {
-            if (context.Entity.GetEntityName() != "sys_role") return;
+            if (!EntityCommon.CompareEntityName(nameof(SysRole), context.Entity.GetEntityName()))
+                return;
 
             var obj = context.Entity as SysRole;
 
