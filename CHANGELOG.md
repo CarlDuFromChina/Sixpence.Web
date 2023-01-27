@@ -1,5 +1,10 @@
 # 变更日志
 
+## v1.5.2
+
++ 系统参数添加描述字段
++ 添加 SysConfigCache，移除 SysConfigFactory
+
 ## v1.5.1
 
 + 修复菜单获取失败

@@ -31,7 +31,7 @@
 ## 安装
 
 ```powershell
-dotnet add package Sixpence.Web --version 1.5.1
+dotnet add package Sixpence.Web --version 1.5.2
 ```
 
 ## 使用
@@ -120,8 +120,8 @@ public class Startup
         });
 
         app.UseJob();
-
         app.UseSysRole();
+        app.UseSysConfig();
 
         if (env.IsDevelopment())
         {
