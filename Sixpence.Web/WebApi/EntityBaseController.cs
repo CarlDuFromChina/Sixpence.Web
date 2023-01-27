@@ -24,7 +24,7 @@ namespace Sixpence.Web.WebApi
         /// </summary>
         /// <returns></returns>
         [HttpGet("views")]
-        public IList<EntityView> GetViewList()
+        public virtual IList<EntityView> GetViewList()
         {
             return new S().GetViewList();
         }
@@ -92,7 +92,7 @@ namespace Sixpence.Web.WebApi
         /// <param name="entity"></param>
         /// <returns></returns>
         [HttpPost]
-        public string CreateData(E entity)
+        public virtual string CreateData(E entity)
         {
             return new S().CreateData(entity);
         }
@@ -102,7 +102,7 @@ namespace Sixpence.Web.WebApi
         /// </summary>
         /// <param name="entity"></param>
         [HttpPut]
-        public void UpdateData(E entity)
+        public virtual void UpdateData(E entity)
         {
             new S().UpdateData(entity);
         }
@@ -114,7 +114,7 @@ namespace Sixpence.Web.WebApi
         /// <returns></returns>
         [HttpPost]
         [Route("save")]
-        public string CreateOrUpdateData(E entity)
+        public virtual string CreateOrUpdateData(E entity)
         {
             return new S().CreateOrUpdateData(entity);
         }
@@ -124,7 +124,7 @@ namespace Sixpence.Web.WebApi
         /// </summary>
         /// <param name="ids"></param>
         [HttpDelete("{id}")]
-        public void DeleteData(string id)
+        public virtual void DeleteData(string id)
         {
             if (!string.IsNullOrEmpty(id))
             {
@@ -135,7 +135,7 @@ namespace Sixpence.Web.WebApi
 
         [HttpGet]
         [Route("privilege")]
-        public EntityPrivilegeResponse GetPrivilege()
+        public virtual EntityPrivilegeResponse GetPrivilege()
         {
             return new S().GetPrivilege();
         }
