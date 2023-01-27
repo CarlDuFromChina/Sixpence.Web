@@ -1,5 +1,10 @@
 # 变更日志
 
+## v1.5.3
+
++ 新增系统参数：Github、Gitee
++ EntityBaseController 方法修改为虚方法
+
 ## v1.5.2
 
 + 系统参数添加描述字段
