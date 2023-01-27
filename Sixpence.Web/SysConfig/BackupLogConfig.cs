@@ -15,5 +15,7 @@ namespace Sixpence.Web.SysConfig
         public object DefaultValue { get => 30; }
 
         public string Code => "log_backup_days";
+
+        public string Description => "填入数值类型，默认 30";
     }
 }

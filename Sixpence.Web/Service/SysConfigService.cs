@@ -1,5 +1,9 @@
-﻿using Sixpence.ORM.EntityManager;
+﻿using Sixpence.Common;
+using Sixpence.ORM.Entity;
+using Sixpence.ORM.EntityManager;
+using Sixpence.Web.Cache;
 using Sixpence.Web.Entity;
+using Sixpence.Web.SysConfig;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +21,27 @@ namespace Sixpence.Web.Service
 
         public object GetValue(string code)
         {
-            if (!string.IsNullOrEmpty(code))
+            return SysConfigCache.GetValue(code);
+        }
+
+        public void CreateMissingConfig(IEnumerable<ISysConfig> settings)
+        {
+            settings.Each(item =>
             {
-                var sql = @"
-select * from sys_config where code = @code;
-";
-                var data = Manager.QueryFirst<Entity.SysConfig>(sql, new Dictionary<string, object>() { { "@code", code } });
-                return data?.value;
-            }
-            return "";
+                var data = Manager.QueryFirst<Entity.SysConfig>("select * from sys_config where code = @code", new { code = item.Code });
+                if (data == null)
+                {
+                    data = new Entity.SysConfig()
+                    {
+                        id = EntityCommon.GenerateGuid(),
+                        name = item.Name,
+                        code = item.Code,
+                        value = item.DefaultValue.ToString(),
+                        description = item.Description
+                    };
+                    Manager.Create(data);
+                }
+            });
         }
     }
 }

@@ -93,9 +93,11 @@ namespace Sixpence.Web
                 options.AutoGenerate = true;
             });
 
+            #region Sixpence Web
             app.UseJob();
-
             app.UseSysRole();
+            app.UseSysConfig();
+            #endregion
 
             if (env.IsDevelopment())
             {

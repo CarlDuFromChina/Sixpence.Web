@@ -12,6 +12,7 @@ using Sixpence.Web.Auth.Role.BasicRole;
 using Sixpence.Web.Job;
 using Sixpence.Web.Model;
 using Sixpence.Web.Service;
+using Sixpence.Web.SysConfig;
 
 namespace Sixpence.Web.Extensions
 {
@@ -48,6 +49,13 @@ namespace Sixpence.Web.Extensions
             // 权限读取到缓存
             roles.Each(item => MemoryCacheUtil.Set(item.GetRoleKey, new RolePrivilegeModel() { Role = item.GetSysRole(), Privileges = item.GetRolePrivilege() }, 3600 * 12));
 
+            return app;
+        }
+
+        public static IApplicationBuilder UseSysConfig(this IApplicationBuilder app)
+        {
+            var settings = ServiceContainer.ResolveAll<ISysConfig>();
+            new SysConfigService().CreateMissingConfig(settings);
             return app;
         }
     }

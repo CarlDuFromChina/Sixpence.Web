@@ -8,6 +8,7 @@ using System.Linq;
 using Sixpence.Common;
 using Sixpence.Web.Utils;
 using Sixpence.Web.SysConfig;
+using Sixpence.Web.Cache;
 
 namespace Sixpence.Web.Job
 {
@@ -59,7 +60,7 @@ namespace Sixpence.Web.Job
         /// </summary>
         private void DeleteLog()
         {
-            var days = SysConfigFactory.GetValue<BackupLogSysConfig>();
+            var days = SysConfigCache.GetValue<BackupLogSysConfig>();
             var files = FileHelper.GetFileList("*.log", FolderType.LogArchive);
             var logNameList = new List<string>();
 
