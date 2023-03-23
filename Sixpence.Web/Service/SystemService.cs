@@ -20,6 +20,7 @@ using System.Linq;
 using Sixpence.Web.Entity;
 using Sixpence.Web.Model.System;
 using Sixpence.Web.Model;
+using Sixpence.Common.Crypto;
 
 namespace Sixpence.Web.Service
 {

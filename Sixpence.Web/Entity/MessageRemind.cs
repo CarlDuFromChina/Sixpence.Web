@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("message_remind", "消息提醒", true)]
+    [Entity("message_remind", "消息提醒")]
     public partial class MessageRemind : BaseEntity
     {
         /// <summary>

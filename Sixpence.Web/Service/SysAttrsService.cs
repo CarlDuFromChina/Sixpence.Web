@@ -31,13 +31,13 @@ namespace Sixpence.Web.Service
             var dateType = Manager.Driver.Convert2DbType(typeof(DateTime));
             var columns = new List<ColumnOptions>()
             {
-                { new ColumnOptions() { Name = "name", LogicalName = "名称", Type = stringType, Length = 100, IsRequire = false } },
-                { new ColumnOptions() { Name = "created_by", LogicalName = "创建人", Type = stringType, Length = 40, IsRequire = true } },
-                { new ColumnOptions() { Name = "created_by_name", LogicalName = "创建人", Type = stringType, Length = 100, IsRequire = true } },
-                { new ColumnOptions() { Name= "created_at", LogicalName = "创建日期", Type = dateType, IsRequire = true } },
-                { new ColumnOptions() { Name = "updated_by", LogicalName = "修改人", Type = stringType, Length = 40, IsRequire = true } },
-                { new ColumnOptions() { Name = "updated_by_name", LogicalName = "修改人", Type = stringType, Length = 100, IsRequire = true } },
-                { new ColumnOptions() { Name = "updated_at", LogicalName = "修改日期", Type = dateType, IsRequire = true } }
+                { new ColumnOptions() { Name = "name", Remark = "名称", Type = stringType, Length = 100, IsRequire = false } },
+                { new ColumnOptions() { Name = "created_by", Remark = "创建人", Type = stringType, Length = 40, IsRequire = true } },
+                { new ColumnOptions() { Name = "created_by_name", Remark = "创建人", Type = stringType, Length = 100, IsRequire = true } },
+                { new ColumnOptions() { Name= "created_at", Remark = "创建日期", Type = dateType, IsRequire = true } },
+                { new ColumnOptions() { Name = "updated_by", Remark = "修改人", Type = stringType, Length = 40, IsRequire = true } },
+                { new ColumnOptions() { Name = "updated_by_name", Remark = "修改人", Type = stringType, Length = 100, IsRequire = true } },
+                { new ColumnOptions() { Name = "updated_at", Remark = "修改日期", Type = dateType, IsRequire = true } }
             };
             Manager.ExecuteTransaction(() =>
             {
@@ -54,7 +54,7 @@ WHERE entityid = @id AND code = @code;
                     {
                         id = Guid.NewGuid().ToString(),
                         code = item.Name,
-                        name = item.LogicalName,
+                        name = item.Remark,
                         entityid = entity.id,
                         entityid_name = entity.name,
                         attr_type = item.Type,

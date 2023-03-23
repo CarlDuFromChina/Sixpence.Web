@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("version_script_execution_log", "版本脚本执行日志", true)]
+    [Entity("version_script_execution_log", "版本脚本执行日志")]
     public class VersionScriptExecutionLog : BaseEntity
     {
         /// <summary>

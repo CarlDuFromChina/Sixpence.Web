@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("job_history", "作业执行记录", false)]
+    [Entity("job_history", "作业执行记录")]
     public class JobHistory : BaseEntity
     {
         [DataMember]
