@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("user_info", "用户", true)]
+    [Entity("user_info", "用户")]
     [KeyAttributes("请勿重复创建用户", "code")]
     [KeyAttributes("邮箱已被注册", "mailbox")]
     [KeyAttributes("手机号码已被注册", "cellphone")]

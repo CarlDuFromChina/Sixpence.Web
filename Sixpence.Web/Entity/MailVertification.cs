@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("mail_vertification", "邮箱验证", true)]
+    [Entity("mail_vertification", "邮箱验证")]
     public partial class MailVertification : BaseEntity
     {
         /// <summary>

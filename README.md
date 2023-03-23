@@ -4,7 +4,7 @@
 
 ## 介绍
 
-一个基于`.net core 3.1`的`WebApi`框架，通过此框架能迅速搭建一个接口平台
+一个基于`.net 6.0`的`WebApi`框架，通过此框架能迅速搭建一个接口平台
 
 + 基础功能
   + 登录/注册
@@ -31,7 +31,7 @@
 ## 安装
 
 ```powershell
-dotnet add package Sixpence.Web --version 1.5.3
+dotnet add package Sixpence.Web --version 2.0.0
 ```
 
 ## 使用

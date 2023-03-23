@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Text;
 using Sixpence.Web.Model.Github;
 using Sixpence.Web.Entity;
+using Sixpence.Common.Crypto;
 
 namespace Sixpence.Web.Service
 {

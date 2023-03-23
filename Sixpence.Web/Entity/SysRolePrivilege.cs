@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("sys_role_privilege", "角色权限", true)]
+    [Entity("sys_role_privilege", "角色权限")]
     public partial class SysRolePrivilege : BaseEntity
     {
         /// <summary>

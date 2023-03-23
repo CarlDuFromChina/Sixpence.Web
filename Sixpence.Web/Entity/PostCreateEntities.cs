@@ -36,9 +36,8 @@ namespace Sixpence.ORM.Entity
                         entity = new SysEntity()
                         {
                             id = Guid.NewGuid().ToString(),
-                            name = item.GetLogicalName(),
+                            name = item.GetRemark(),
                             code = item.GetEntityName(),
-                            is_sys = item.IsSystemEntity()
                         };
                         manager.Create(entity, false);
                     }
@@ -56,7 +55,7 @@ namespace Sixpence.ORM.Entity
                             manager.Execute(sql, new Dictionary<string, object>() { { "@code", attr.ToLower() }, { "@entityid", EntityCache.GetEntity(item.GetEntityName())?.id } });
                             sql = manager.Driver.GetDropColumnSql(item.GetEntityName(), new List<ColumnOptions>() { new ColumnOptions() { Name = attr } });
                             manager.Execute(sql);
-                            logger.Debug($"实体{item.GetLogicalName()} （{item.GetEntityName()}）删除字段：{attr}");
+                            logger.Debug($"实体{item.GetRemark()} （{item.GetEntityName()}）删除字段：{attr}");
                         }
                     });
                     #endregion
@@ -69,7 +68,7 @@ namespace Sixpence.ORM.Entity
                             var _attr = new SysAttrs()
                             {
                                 id = Guid.NewGuid().ToString(),
-                                name = attr.LogicalName,
+                                name = attr.Remark,
                                 code = attr.Name,
                                 entityid = entity.id,
                                 entityid_name = entity.name,
@@ -80,7 +79,7 @@ namespace Sixpence.ORM.Entity
                                 default_value = ConvertUtil.ConToString(attr.DefaultValue)
                             };
                             manager.Create(_attr);
-                            logger.Debug($"实体{item.GetLogicalName()}（{item.GetEntityName()}）创建字段：{attr.LogicalName}（{attr.Name}）成功");
+                            logger.Debug($"实体{item.GetRemark()}（{item.GetEntityName()}）创建字段：{attr.Remark}（{attr.Name}）成功");
                         }
                     });
                     #endregion

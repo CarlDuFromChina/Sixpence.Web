@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("sys_role", "角色", true)]
+    [Entity("sys_role", "角色")]
     public partial class SysRole : BaseEntity
     {
         /// <summary>

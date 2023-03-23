@@ -16,6 +16,7 @@ using Sixpence.Web.Model.Pixabay;
 using Sixpence.Web.Model.Gallery;
 using Sixpence.Web.Model;
 using Sixpence.Web.Entity;
+using Sixpence.Common.Crypto;
 
 namespace Sixpence.Web.Service
 {

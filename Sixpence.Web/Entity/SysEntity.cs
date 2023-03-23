@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("sys_entity", "实体", true)]
+    [Entity("sys_entity", "实体")]
     [KeyAttributes("实体不能重复创建", "code")]
     public partial class SysEntity : BaseEntity
     {
@@ -27,17 +27,5 @@ namespace Sixpence.Web.Entity
         /// </summary>
         [DataMember, Column, Description("编码")]
         public string code { get; set; }
-
-        /// <summary>
-        /// 是否系统实体
-        /// </summary>
-        [DataMember, Column, Description("是否系统实体")]
-        public bool? is_sys { get; set; }
-
-        /// <summary>
-        /// 是否系统实体
-        /// </summary>
-        [DataMember, Column, Description("是否系统实体")]
-        public string is_sys_name { get; set; }
     }
 }

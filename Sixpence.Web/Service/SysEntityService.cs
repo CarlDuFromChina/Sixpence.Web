@@ -118,9 +118,9 @@ DELETE FROM sys_attrs WHERE entityid IN (in@ids);
                 {
                     var attribute = $@"
         /// <summary>
-        /// {column.LogicalName}
+        /// {column.Remark}
         /// </summary>
-        [DataMember, Column, Description(""{column.LogicalName}"")]
+        [DataMember, Column, Description(""{column.Remark}"")]
         public {Manager.Driver.Convert2CSharpType(column.Type)} {column.Name} {{ get; set; }}
 ";
                     attributes += attribute;
@@ -135,7 +135,7 @@ using System.Runtime.Serialization;
 
 namespace SixpenceStudio.Core
 {{
-    [Entity(""{entity.code}"",""{entity.GetLogicalName()}"", {entity.is_sys})]
+    [Entity(""{entity.code}"",""{entity.GetRemark()}"")]
     public partial class {entity.code} : BaseEntity
     {{
         /// <summary>

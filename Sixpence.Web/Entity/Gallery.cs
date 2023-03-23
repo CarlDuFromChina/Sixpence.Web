@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("gallery", "图库", true)]
+    [Entity("gallery", "图库")]
     public partial class Gallery : BaseEntity
     {
         /// <summary>

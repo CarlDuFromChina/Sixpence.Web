@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("sys_paramgroup", "选项集", true)]
+    [Entity("sys_paramgroup", "选项集")]
     public partial class SysParamGroup : BaseEntity
     {
         /// <summary>

@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace Sixpence.Web.Entity
 {
-    [Entity("auth_user", "用户授权", true)]
+    [Entity("auth_user", "用户授权")]
     [KeyAttributes("请勿重复创建用户", "code")]
     public partial class AuthUser : BaseEntity
     {
