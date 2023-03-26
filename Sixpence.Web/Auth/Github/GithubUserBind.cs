@@ -13,16 +13,18 @@ namespace Sixpence.Web.Auth.Github
 
         public void Bind(string code, string userid)
         {
-            var manager = EntityManagerFactory.GetManager();
-            var githubService = new GithubAuthService(manager);
-            manager.ExecuteTransaction(() =>
+            using (var manager = EntityManagerFactory.GetManager())
             {
-                var user = manager.QueryFirst<UserInfo>(userid);
-                var githubToken = githubService.GetAccessToken(code);
-                var githubUser = githubService.GetUserInfo(githubToken);
-                user.github_id = githubUser.id.ToString();
-                manager.Update(user);
-            });
+                var githubService = new GithubAuthService(manager);
+                manager.ExecuteTransaction(() =>
+                {
+                    var user = manager.QueryFirst<UserInfo>(userid);
+                    var githubToken = githubService.GetAccessToken(code);
+                    var githubUser = githubService.GetUserInfo(githubToken);
+                    user.github_id = githubUser.id.ToString();
+                    manager.Update(user);
+                });
+            }
         }
     }
 }

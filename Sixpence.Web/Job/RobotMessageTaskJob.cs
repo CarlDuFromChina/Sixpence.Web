@@ -19,7 +19,7 @@ namespace Sixpence.Web.Job
         public override void Executing(IJobExecutionContext context)
         {
             var entity = context.JobDetail.JobDataMap.Get("Entity") as RobotMessageTask;
-            var Manager = EntityManagerFactory.GetManager();
+            using var Manager = EntityManagerFactory.GetManager();
             var robot = Manager.QueryFirst<Entity.Robot>(entity.robotid);
             try
             {

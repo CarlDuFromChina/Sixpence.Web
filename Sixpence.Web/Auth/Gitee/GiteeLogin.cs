@@ -89,6 +89,10 @@ namespace Sixpence.Web.Auth.Gitee
                 logger.Error("Gitee 登录失败：" + ex.Message, ex);
                 return new LoginResponse() { result = false, message = "Gitee 登录失败" };
             }
+            finally
+            {
+                manager.Dispose();
+            }
         }
     }
 }

@@ -63,7 +63,7 @@ namespace Sixpence.Web.Job
 
                 var stopWatch = new Stopwatch();
                 stopWatch.Start();
-                var manager = EntityManagerFactory.GetManager();
+                using var manager = EntityManagerFactory.GetManager();
                 UserIdentityUtil.SetCurrentUser(user);
                 var history = new JobHistory()
                 {

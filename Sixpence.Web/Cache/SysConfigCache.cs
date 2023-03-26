@@ -22,9 +22,11 @@ namespace Sixpence.Web.Cache
             var config = settings.GetOrAdd(CACHE_PREFIX + t.Code, (key) =>
             {
                 var sql = @"select * from sys_config where code = @code;";
-                var manager = EntityManagerFactory.GetManager();
-                var data = manager.QueryFirst<Entity.SysConfig>(sql, new Dictionary<string, object>() { { "@code", t.Code } });
-                return data;
+                using (var manager = EntityManagerFactory.GetManager())
+                {
+                    var data = manager.QueryFirst<Entity.SysConfig>(sql, new Dictionary<string, object>() { { "@code", t.Code } });
+                    return data;
+                }
             });
 
             return config?.value ?? t.DefaultValue;
@@ -35,9 +37,11 @@ namespace Sixpence.Web.Cache
             var config = settings.GetOrAdd(CACHE_PREFIX + code, (key) =>
             {
                 var sql = @"select * from sys_config where code = @code;";
-                var manager = EntityManagerFactory.GetManager();
-                var data = manager.QueryFirst<Entity.SysConfig>(sql, new Dictionary<string, object>() { { "@code", code } });
-                return data;
+                using (var manager = EntityManagerFactory.GetManager())
+                {
+                    var data = manager.QueryFirst<Entity.SysConfig>(sql, new Dictionary<string, object>() { { "@code", code } });
+                    return data;
+                }
             });
 
             return config?.value;

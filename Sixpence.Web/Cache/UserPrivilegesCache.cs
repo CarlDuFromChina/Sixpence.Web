@@ -30,9 +30,11 @@ namespace Sixpence.Web.Cache
         {
             return UserPrivliege.GetOrAdd(UserPrivilegesPrefix + userId, (key) =>
             {
-                var manager = EntityManagerFactory.GetManager();
-                var user = manager.QueryFirst<AuthUser>(userId);
-                return manager.Query<SysRolePrivilege>("select * from sys_role_privilege where sys_roleid = @id", new Dictionary<string, object>() { { "@id", user.roleid } }).ToList();
+                using (var manager = EntityManagerFactory.GetManager())
+                {
+                    var user = manager.QueryFirst<AuthUser>(userId);
+                    return manager.Query<SysRolePrivilege>("select * from sys_role_privilege where sys_roleid = @id", new Dictionary<string, object>() { { "@id", user.roleid } }).ToList();
+                }
             });
         }
 

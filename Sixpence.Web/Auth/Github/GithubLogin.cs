@@ -88,6 +88,7 @@ namespace Sixpence.Web.Auth.Github
             catch (Exception ex)
             {
                 logger.Error("Github 登录失败：" + ex.Message, ex);
+                manager.Dispose();
                 return new LoginResponse() { result = false, message = "Github 登录失败" };
             }
         }

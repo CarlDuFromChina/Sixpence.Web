@@ -43,7 +43,7 @@ namespace Sixpence.Web.Extensions
         public static IApplicationBuilder UseSysRole(this IApplicationBuilder app)
         {
             var roles = ServiceContainer.ResolveAll<IRole>();
-            var manager = EntityManagerFactory.GetManager();
+            using var manager = EntityManagerFactory.GetManager();
             new SysRolePrivilegeService(manager).CreateRoleMissingPrivilege();
 
             // 权限读取到缓存

@@ -11,7 +11,7 @@ namespace Sixpence.Web.EntityOptionProvider
     {
         public IEnumerable<SelectOption> GetOptions()
         {
-            var manager = EntityManagerFactory.GetManager();
+            using var manager = EntityManagerFactory.GetManager();
             return manager.Query<SelectOption>($"select code AS Value, name AS Name from sys_entity");
         }
     }

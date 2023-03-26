@@ -17,9 +17,14 @@ using System.Linq;
 using Sixpence.Web.Entity;
 using Sixpence.Web.Cache;
 using Sixpence.Web.Service;
+using Sixpence.ORM;
+using Sixpence.ORM.Entity;
 
-namespace Sixpence.ORM.Entity
+namespace Sixpence.Web.EntityPlugin
 {
+    /// <summary>
+    /// 自动创建实体插件，记录实体
+    /// </summary>
     public class PostCreateEntities : IPostCreateEntities
     {
         public void Execute(IEntityManager manager, IEnumerable<IEntity> entities)
@@ -52,7 +57,7 @@ namespace Sixpence.ORM.Entity
                         if (!attrs.Any(item => item.Name.ToLower() == attr.ToLower()))
                         {
                             var sql = @"DELETE FROM sys_attrs WHERE lower(code) = @code AND entityid = @entityid";
-                            manager.Execute(sql, new Dictionary<string, object>() { { "@code", attr.ToLower() }, { "@entityid", EntityCache.GetEntity(item.GetEntityName())?.id } });
+                            manager.Execute(sql, new Dictionary<string, object>() { { "@code", attr.ToLower() }, { "@entityid", entity.id } });
                             sql = manager.Driver.GetDropColumnSql(item.GetEntityName(), new List<ColumnOptions>() { new ColumnOptions() { Name = attr } });
                             manager.Execute(sql);
                             logger.Debug($"实体{item.GetRemark()} （{item.GetEntityName()}）删除字段：{attr}");

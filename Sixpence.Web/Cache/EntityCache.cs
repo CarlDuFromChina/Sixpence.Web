@@ -19,9 +19,11 @@ namespace Sixpence.Web.Cache
         {
             return Entities.GetOrAdd(EntityCachePrefix + entityName, (key) =>
             {
-                var manager = EntityManagerFactory.GetManager();
-                var data = manager.QueryFirst<SysEntity>("select * from sys_entity where code = @name", new Dictionary<string, object>() { { "@name", entityName } });
-                return data;
+                using (var manager = EntityManagerFactory.GetManager())
+                {
+                    var data = manager.QueryFirst<SysEntity>("select * from sys_entity where code = @name", new Dictionary<string, object>() { { "@name", entityName } });
+                    return data;
+                }
             });
         }
 
