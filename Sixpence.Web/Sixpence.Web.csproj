@@ -5,7 +5,7 @@
 	  <Authors>Karl Du</Authors>
     <Company>Sixpence</Company>
     <Description>一个功能强大的 Web 框架</Description>
-    <ReleaseVersion>2.0.0</ReleaseVersion>
+    <ReleaseVersion>2.1.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
 
@@ -45,7 +45,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.1.0" />
     <PackageReference Include="CsvHelper" Version="27.2.1" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="IdentityModel" Version="5.1.0" />
@@ -69,7 +69,7 @@
     <PackageReference Include="Quartz" Version="3.3.2" />
     <PackageReference Include="Quartz.Serialization.Json" Version="3.3.2" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.4" />
-    <PackageReference Include="Sixpence.Common" Version="2.0.0" />
+    <PackageReference Include="Sixpence.Common" Version="2.1.0" />
     <PackageReference Include="Sixpence.ORM" Version="3.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
