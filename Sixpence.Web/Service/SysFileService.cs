@@ -13,6 +13,7 @@ using Sixpence.Web.Model;
 using Sixpence.Web.Store;
 using Sixpence.Web.Entity;
 using Sixpence.Common.Crypto;
+using Sixpence.Web.Utils;
 
 namespace Sixpence.Web.Service
 {
@@ -120,7 +121,7 @@ WHERE hash_code = @code
             {
                 // 上传大图
                 var image = UploadFile(stream, suffix, fileType, contentType, objectId, file.FileName);
-                var thumbStream = ImageUtil.GetThumbnail(image.GetFilePath());
+                var thumbStream = ImageHelper.GetThumbnail(image.GetFilePath());
                 var image2 = UploadFile(thumbStream, suffix, fileType, contentType, objectId, GetPreviewImageFileName(file.FileName));
                 return new List<FileInfoModel>()
                 {

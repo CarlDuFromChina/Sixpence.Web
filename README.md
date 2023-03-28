@@ -31,7 +31,7 @@
 ## 安装
 
 ```powershell
-dotnet add package Sixpence.Web --version 2.1.0
+dotnet add package Sixpence.Web --version 2.1.1
 ```
 
 ## 使用

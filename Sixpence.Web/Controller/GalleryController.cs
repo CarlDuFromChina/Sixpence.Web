@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sixpence.Web.Model.Pixabay;
 using Sixpence.Web.Entity;
 using Sixpence.Web.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Sixpence.Web.Controller
 {
@@ -37,7 +38,7 @@ namespace Sixpence.Web.Controller
         /// 获取随机图片
         /// </summary>
         /// <returns></returns>
-        [HttpGet("random_image")]
+        [HttpGet("random_image"), AllowAnonymous]
         public Gallery RandomImage()
         {
             return new GalleryService().GetRandomImage();

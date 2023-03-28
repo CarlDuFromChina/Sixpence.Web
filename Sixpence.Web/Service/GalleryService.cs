@@ -17,6 +17,7 @@ using Sixpence.Web.Model.Gallery;
 using Sixpence.Web.Model;
 using Sixpence.Web.Entity;
 using Sixpence.Common.Crypto;
+using Sixpence.Web.Utils;
 
 namespace Sixpence.Web.Service
 {
@@ -114,7 +115,7 @@ namespace Sixpence.Web.Service
             {
                 var galleryid = Guid.NewGuid().ToString();
                 var image = sysFileService.UploadFile(imgStream, suffix, "gallery", contentType, galleryid, originFileName);
-                var thumbStream = ImageUtil.GetThumbnail(image.GetFilePath());
+                var thumbStream = ImageHelper.GetThumbnail(image.GetFilePath());
                 var image2 = sysFileService.UploadFile(thumbStream, suffix, "gallery", contentType, galleryid, sysFileService.GetPreviewImageFileName(originFileName));
 
                 var gallery = new Gallery()
