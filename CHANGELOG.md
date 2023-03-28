@@ -1,5 +1,9 @@
 # 变更日志
 
+## v2.1.1
+
++ 修复`System.Drawing.Common`在`Linux`环境下异常
+
 ## v2.1.0
 
 + 升级`Sixpence.ORM 3.1.0`
