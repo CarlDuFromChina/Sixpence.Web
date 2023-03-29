@@ -5,7 +5,7 @@
 	  <Authors>Karl Du</Authors>
     <Company>Sixpence</Company>
     <Description>一个功能强大的 Web 框架</Description>
-    <ReleaseVersion>2.1.1</ReleaseVersion>
+    <ReleaseVersion>2.1.2</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
 
@@ -72,6 +72,7 @@
     <PackageReference Include="Sixpence.Common" Version="2.0.0" />
     <PackageReference Include="Sixpence.ORM" Version="3.1.0" />
     <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
