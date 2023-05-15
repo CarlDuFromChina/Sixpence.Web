@@ -12,6 +12,7 @@ using System.Text;
 using Sixpence.Web.Model.Gitee;
 using Sixpence.Web.Entity;
 using Sixpence.Common.Crypto;
+using Sixpence.Common.Extensions;
 
 namespace Sixpence.Web.Service
 {
@@ -71,26 +72,28 @@ namespace Sixpence.Web.Service
         public string DownloadImage(string url, string objectid)
         {
             var result = HttpUtil.DownloadImage(url, out var contentType);
-            var stream = StreamUtil.BytesToStream(result);
-            var hash_code = SHAUtil.GetFileSHA1(stream);
-
-            var config = StoreConfig.Config;
-            var id = Guid.NewGuid().ToString();
-            var fileName = $"{id}.png";
-            ServiceContainer.Resolve<IStoreStrategy>(config?.Type).Upload(stream, fileName, out var filePath);
-
-            var data = new SysFile()
+            using (var stream = result.ToStream())
             {
-                id = id,
-                name = fileName,
-                real_name = fileName,
-                hash_code = hash_code,
-                file_type = "avatar",
-                content_type = contentType,
-                objectId = objectid
-            };
+                var hash_code = SHAUtil.GetFileSHA1(stream);
 
-            return Manager.Create(data);
+                var config = StoreConfig.Config;
+                var id = Guid.NewGuid().ToString();
+                var fileName = $"{id}.png";
+                ServiceContainer.Resolve<IStoreStrategy>(config?.Type).Upload(stream, fileName, out var filePath);
+
+                var data = new SysFile()
+                {
+                    id = id,
+                    name = fileName,
+                    real_name = fileName,
+                    hash_code = hash_code,
+                    file_type = "avatar",
+                    content_type = contentType,
+                    objectId = objectid
+                };
+
+                return Manager.Create(data);
+            }
         }
     }
 }

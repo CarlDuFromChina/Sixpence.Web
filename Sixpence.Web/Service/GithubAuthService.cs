@@ -13,6 +13,7 @@ using System.Text;
 using Sixpence.Web.Model.Github;
 using Sixpence.Web.Entity;
 using Sixpence.Common.Crypto;
+using Sixpence.Common.Extensions;
 
 namespace Sixpence.Web.Service
 {
@@ -96,7 +97,7 @@ namespace Sixpence.Web.Service
         public string DownloadImage(string url, string objectid)
         {
             var result = HttpUtil.DownloadImage(url, out var contentType);
-            var stream = StreamUtil.BytesToStream(result);
+            var stream = result.ToStream();
             var hash_code = SHAUtil.GetFileSHA1(stream);
 
             var config = StoreConfig.Config;

@@ -5,9 +5,11 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sixpence.Web", "Sixpence.Web\Sixpence.Web.csproj", "{C58C7039-E0E6-44F3-8113-D41D5479DD49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sixpence.Web.Test", "Sixpence.Web.Test\Sixpence.Web.Test.csproj", "{1845A2FC-8739-4BB6-84C8-F2278A16DE13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sixpence.Web.Test", "Sixpence.Web.Test\Sixpence.Web.Test.csproj", "{1845A2FC-8739-4BB6-84C8-F2278A16DE13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sixpence.Web.Console", "Sixpence.Web.Console\Sixpence.Web.Console.csproj", "{696BA714-53A6-4CE5-B467-778A1B986576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sixpence.Web.Console", "Sixpence.Web.Console\Sixpence.Web.Console.csproj", "{696BA714-53A6-4CE5-B467-778A1B986576}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sixpence.Common", "Sixpence.Common\Sixpence.Common.csproj", "{0273703A-F6A4-4F41-806E-599D9DDA134F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{696BA714-53A6-4CE5-B467-778A1B986576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{696BA714-53A6-4CE5-B467-778A1B986576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{696BA714-53A6-4CE5-B467-778A1B986576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0273703A-F6A4-4F41-806E-599D9DDA134F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0273703A-F6A4-4F41-806E-599D9DDA134F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0273703A-F6A4-4F41-806E-599D9DDA134F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0273703A-F6A4-4F41-806E-599D9DDA134F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
